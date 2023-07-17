@@ -66,8 +66,8 @@ importers:
         specifier: workspace:*
         version: link:../language-server
       '@types/vscode':
-        specifier: 1.78.1
-        version: 1.78.1
+        specifier: 1.80.0
+        version: 1.80.0
       '@volar/language-server':
         specifier: ~1.9.0
         version: 1.9.0
@@ -1155,8 +1155,8 @@ packages:
     resolution: {integrity: sha512-MFETx3tbTjE7Uk6vvnWINA/1iJ7LuMdO4fcq8UfF0pRbj01aGLduVvQcRyswuACJdpnHgg8E3rQLhaRdNEJS0w==}
     dev: true
 
-  /@types/vscode@1.78.1:
-    resolution: {integrity: sha512-wEA+54axejHu7DhcUfnFBan1IqFD1gBDxAFz8LoX06NbNDMRJv/T6OGthOs52yZccasKfN588EyffHWABkR0fg==}
+  /@types/vscode@1.80.0:
+    resolution: {integrity: sha512-qK/CmOdS2o7ry3k6YqU4zD3R2AYlJfbwBoSbKpBoP+GpXNE+0NEgJOli4n0bm0diK5kfBnchgCEj4igQz/44Hg==}
     dev: true
 
   /@types/yargs-parser@21.0.0:
