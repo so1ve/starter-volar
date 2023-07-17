@@ -13,7 +13,7 @@ export async function activate(context: vscode.ExtensionContext) {
     "dist",
     "server.js",
   );
-  const runOptions = { execArgv: <string[]>[] };
+  const runOptions = { execArgv: [] as string[] };
   const debugOptions = { execArgv: ["--nolazy", `--inspect=${6009}`] };
   const serverOptions: lsp.ServerOptions = {
     run: {
