@@ -16,7 +16,7 @@
   "license": "MIT",
   "sideEffects": false,
   "bin": {
-    "html1-name-language-server": "./bin/html1-language-server.js"
+    "html1-language-server": "./bin/html1-language-server.js"
   },
   "main": "./dist/index.js",
   "typesVersions": {
