@@ -64,7 +64,7 @@ export class Html1File implements VirtualFile {
 	}
 
 	addStyleTag() {
-		let i = 0;
+		let index = 0;
 		for (const root of this.htmlDocument.roots) {
 			if (
 				root.tag === "style" &&
@@ -76,7 +76,7 @@ export class Html1File implements VirtualFile {
 					root.endTagStart,
 				);
 				this.embeddedFiles.push({
-					fileName: `${this.fileName}.${i++}.css`,
+					fileName: `${this.fileName}.${index++}.css`,
 					kind: FileKind.TextFile,
 					snapshot: {
 						getText: (start, end) => styleText.slice(start, end),
