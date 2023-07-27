@@ -42,12 +42,12 @@ const plugin: LanguageServerPlugin = (): ReturnType<LanguageServerPlugin> => ({
 				}
 
 				const errors: Diagnostic[] = [];
-				for (let i = 1; i < styleNodes.length; i++) {
+				for (let index = 1; index < styleNodes.length; index++) {
 					errors.push({
 						severity: 2,
 						range: {
-							start: file.document.positionAt(styleNodes[i].start),
-							end: file.document.positionAt(styleNodes[i].end),
+							start: file.document.positionAt(styleNodes[index].start),
+							end: file.document.positionAt(styleNodes[index].end),
 						},
 						source: "html1",
 						message: "Only one style tag is allowed.",
