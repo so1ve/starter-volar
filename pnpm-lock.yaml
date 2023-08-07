@@ -54,8 +54,8 @@ importers:
         specifier: 0.0.11
         version: 0.0.11(@volar/language-service@1.10.0)
       volar-service-emmet:
-        specifier: 0.0.10
-        version: 0.0.10(@volar/language-service@1.10.0)
+        specifier: 0.0.11
+        version: 0.0.11(@volar/language-service@1.10.0)
       volar-service-html:
         specifier: 0.0.11
         version: 0.0.11(@volar/language-service@1.10.0)
@@ -5102,30 +5102,17 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /volar-service-emmet@0.0.10(@volar/language-service@1.10.0):
-    resolution: {integrity: sha512-O7JahMMvexee65ifph1rhIH/L97S2rMtKAut+x3/yi4PEMVM0XkuKiXkC2y3ZCO4DzFsMhZWtEVBE0Ym76nj2g==}
+  /volar-service-emmet@0.0.11(@volar/language-service@1.10.0):
+    resolution: {integrity: sha512-9q6F1FaL3q/kxvt8EhbAmW8FtIf8Zi9FMHbuPSOQMn7/JlfXBtkB7y97uXvtQWpoxCumkuhY7kb1iBwtu7U+Eg==}
     peerDependencies:
-      '@volar/language-service': ~1.9.0
+      '@volar/language-service': ~1.10.0
     peerDependenciesMeta:
       '@volar/language-service':
         optional: true
     dependencies:
       '@volar/language-service': 1.10.0
       '@vscode/emmet-helper': 2.9.2
-      volar-service-html: 0.0.10(@volar/language-service@1.10.0)
-    dev: false
-
-  /volar-service-html@0.0.10(@volar/language-service@1.10.0):
-    resolution: {integrity: sha512-lr6hDCkp+HOqpvMzCtiSg80v82FBaUIn69+dZCMAp9O8qPhEo6WhrRwe9FEzSpg//WFwoWYfyZ1uPaj+RzT6aw==}
-    peerDependencies:
-      '@volar/language-service': ~1.9.0
-    peerDependenciesMeta:
-      '@volar/language-service':
-        optional: true
-    dependencies:
-      '@volar/language-service': 1.10.0
-      vscode-html-languageservice: 5.0.6
-      vscode-uri: 3.0.7
+      volar-service-html: 0.0.11(@volar/language-service@1.10.0)
     dev: false
 
   /volar-service-html@0.0.11(@volar/language-service@1.10.0):
