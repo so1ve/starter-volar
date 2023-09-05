@@ -13,7 +13,7 @@ import * as HtmlService from "volar-service-html";
 
 import { Html1File, language } from "./language";
 
-const plugin: LanguageServerPlugin = (): ReturnType<LanguageServerPlugin> => ({
+const plugin: LanguageServerPlugin = () => ({
 	extraFileExtensions: [
 		{ extension: "html1", isMixedContent: true, scriptKind: 7 },
 	],
@@ -27,7 +27,7 @@ const plugin: LanguageServerPlugin = (): ReturnType<LanguageServerPlugin> => ({
 		config.services.html ??= HtmlService.create();
 		config.services.css ??= CssService.create();
 		config.services.emmet ??= EmmetService.create();
-		config.services.html1 ??= (context): ReturnType<Service> => ({
+		config.services.html1 ??= (context) => ({
 			provideDiagnostics(document) {
 				const [file] = context!.documents.getVirtualFileByUri(document.uri);
 				if (!(file instanceof Html1File)) {
