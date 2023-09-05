@@ -1,7 +1,6 @@
 import type {
 	Diagnostic,
 	LanguageServerPlugin,
-	Service,
 } from "@volar/language-server/node";
 import {
 	createConnection,
