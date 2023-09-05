@@ -7,9 +7,9 @@ import {
 	createConnection,
 	startLanguageServer,
 } from "@volar/language-server/node";
-import createCssService from "volar-service-css";
-import createEmmetService from "volar-service-emmet";
-import createHtmlService from "volar-service-html";
+import * as CssService from "volar-service-css";
+import * as EmmetService from "volar-service-emmet";
+import * as HtmlService from "volar-service-html";
 
 import { Html1File, language } from "./language";
 
@@ -24,9 +24,9 @@ const plugin: LanguageServerPlugin = (): ReturnType<LanguageServerPlugin> => ({
 
 		// services
 		config.services ??= {};
-		config.services.html ??= createHtmlService();
-		config.services.css ??= createCssService();
-		config.services.emmet ??= createEmmetService();
+		config.services.html ??= HtmlService.create();
+		config.services.css ??= CssService.create();
+		config.services.emmet ??= EmmetService.create();
 		config.services.html1 ??= (context): ReturnType<Service> => ({
 			provideDiagnostics(document) {
 				const [file] = context!.documents.getVirtualFileByUri(document.uri);
