@@ -1,13 +1,14 @@
 {
 	"private": true,
 	"scripts": {
-		"build": "nr --filter \"./packages/*\" build",
+		"build": "pnpm -r run build",
 		"lint": "eslint . && prettier . --check",
 		"lint:fix": "eslint . --fix && prettier . --write",
-		"pack": "nr --filter=\"./packages/vscode\" pack",
+		"pack": "pnpm -r run pack",
 		"prerelease": "nr build",
-		"release": "bumpp && nr --filter=\"./packages/vscode\" publish",
-		"typecheck": "tsc --noEmit"
+		"release": "bumpp && pnpm -r run publish",
+		"typecheck": "tsc --noEmit",
+		"watch": "nodemon --watch packages/*/src/** -e ts --exec \"nr build\""
 	},
 	"devDependencies": {
 		"@antfu/ni": "^0.21.4",
@@ -15,7 +16,9 @@
 		"@so1ve/prettier-config": "^0.118.0",
 		"@types/node": "^18.16.6",
 		"bumpp": "^9.1.1",
+		"concurrently": "^8.2.1",
 		"eslint": "^8.45.0",
+		"nodemon": "^3.0.1",
 		"pkgroll": "^1.10.0",
 		"prettier": "^3.0.0",
 		"tsup": "^7.1.0",

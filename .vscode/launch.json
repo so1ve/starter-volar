@@ -16,10 +16,7 @@
 				"--folder-uri=${workspaceRoot}/sample"
 			],
 			"outFiles": ["${workspaceRoot}/*/*/dist/**/*.js"],
-			"preLaunchTask": {
-				"type": "npm",
-				"script": "build"
-			}
+			"preLaunchTask": "npm: watch"
 		},
 		{
 			"name": "Attach to Server",

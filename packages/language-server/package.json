@@ -34,7 +34,7 @@
 		"access": "public"
 	},
 	"scripts": {
-		"build": "pkgroll",
+		"build": "tsup src/index.ts",
 		"prepublishOnly": "nr build"
 	},
 	"dependencies": {
