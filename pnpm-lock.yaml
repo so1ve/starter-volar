@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -53,8 +57,8 @@ importers:
         specifier: ~1.10.0
         version: 1.10.1
       volar-service-css:
-        specifier: 0.0.11
-        version: 0.0.11(@volar/language-service@1.10.1)
+        specifier: 0.0.13
+        version: 0.0.13(@volar/language-service@1.10.1)
       volar-service-emmet:
         specifier: 0.0.11
         version: 0.0.11(@volar/language-service@1.10.1)
@@ -81,7 +85,7 @@ importers:
         version: 1.10.1
       '@vscode/vsce':
         specifier: latest
-        version: 2.19.0
+        version: 2.21.0
       vscode-languageclient:
         specifier: ^8.1.0
         version: 8.1.0
@@ -1257,8 +1261,8 @@ packages:
     resolution: {integrity: sha512-/yrv59IEnmh655z1oeDnGcvMYwnEzNzHLgeYcQCkhYX0xBvYWrAuefoiLcPBUkMpJsb46bqQ6Yv4pwTTQ4d3Qg==}
     dev: false
 
-  /@vscode/vsce@2.19.0:
-    resolution: {integrity: sha512-dAlILxC5ggOutcvJY24jxz913wimGiUrHaPkk16Gm9/PGFbz1YezWtrXsTKUtJws4fIlpX2UIlVlVESWq8lkfQ==}
+  /@vscode/vsce@2.21.0:
+    resolution: {integrity: sha512-KuxYqScqUY/duJbkj9eE2tN2X/WJoGAy54hHtxT3ZBkM6IzrOg7H7CXGUPBxNlmqku2w/cAjOUSrgIHlzz0mbA==}
     engines: {node: '>= 14'}
     hasBin: true
     dependencies:
@@ -1275,7 +1279,7 @@ packages:
       minimatch: 3.1.2
       parse-semver: 1.1.1
       read: 1.0.7
-      semver: 5.7.2
+      semver: 7.5.4
       tmp: 0.2.1
       typed-rest-client: 1.8.11
       url-join: 4.0.1
@@ -5325,8 +5329,8 @@ packages:
       - terser
     dev: true
 
-  /volar-service-css@0.0.11(@volar/language-service@1.10.1):
-    resolution: {integrity: sha512-8wkycHM+wSbsRSEvW4GCj3rKJRj+KxnGfRhQC1GfQVx4eMHJHHeSrB4ANPm5mBYbmnJPIxxIgZHp7VoMqDZH4g==}
+  /volar-service-css@0.0.13(@volar/language-service@1.10.1):
+    resolution: {integrity: sha512-WAuo7oDYgTQ1cr45EqTGoPGtClj0f5PZDQARgQveXKu0CQgyXn8Bs7c4EjDR0fNLhiG3moBEs2uSUGxjSKghxw==}
     peerDependencies:
       '@volar/language-service': ~1.10.0
     peerDependenciesMeta:
@@ -5591,7 +5595,3 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
