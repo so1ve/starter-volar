@@ -60,8 +60,8 @@ importers:
         specifier: 0.0.13
         version: 0.0.13(@volar/language-service@1.10.1)
       volar-service-html:
-        specifier: 0.0.13
-        version: 0.0.13(@volar/language-service@1.10.1)
+        specifier: 0.0.14
+        version: 0.0.14(@volar/language-service@1.10.1)
       vscode-html-languageservice:
         specifier: ^5.0.6
         version: 5.1.0
@@ -6377,6 +6377,19 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
+  /volar-service-html@0.0.14(@volar/language-service@1.10.1):
+    resolution: {integrity: sha512-PQb97QICxXhXD7AJFU/S/Vexd1L4IP2Sa5SzxYyKnApcx0GNdxaIbFHlev9wazrTgtCtSnaVXJBxY05pZzTKPw==}
+    peerDependencies:
+      '@volar/language-service': ~1.10.0
+    peerDependenciesMeta:
+      '@volar/language-service':
+        optional: true
+    dependencies:
+      '@volar/language-service': 1.10.1
+      vscode-html-languageservice: 5.1.0
+      vscode-uri: 3.0.8
+    dev: false
+
   /vscode-css-languageservice@6.2.7:
     resolution: {integrity: sha512-Jd8wpIg5kJ15CfrieoEPvu3gGFc36sbM3qXCtjVq5zrnLEX5NhHxikMDtf8AgQsYklXiDqiZLKoBnzkJtRbTHQ==}
     dependencies:
@@ -6449,6 +6462,10 @@ packages:
 
   /vscode-uri@3.0.7:
     resolution: {integrity: sha512-eOpPHogvorZRobNqJGhapa0JdwaxpjVvyBp0QIUMRMSf8ZAlqOdEquKuRmw9Qwu0qXtJIWqFtMkmvJjUZmMjVA==}
+
+  /vscode-uri@3.0.8:
+    resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
+    dev: false
 
   /vue-eslint-parser@9.3.1(eslint@8.50.0):
     resolution: {integrity: sha512-Clr85iD2XFZ3lJ52/ppmUDG/spxQu6+MAeHXjjyI4I1NUYZ9xmenQp4N0oaHJhrA8OOxltCVxMRfANGa70vU0g==}
