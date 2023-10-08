@@ -54,8 +54,8 @@ importers:
         specifier: ~1.10.0
         version: 1.10.1
       volar-service-css:
-        specifier: 0.0.13
-        version: 0.0.13(@volar/language-service@1.10.1)
+        specifier: 0.0.14
+        version: 0.0.14(@volar/language-service@1.10.1)
       volar-service-emmet:
         specifier: 0.0.14
         version: 0.0.14(@volar/language-service@1.10.1)
@@ -1189,7 +1189,7 @@ packages:
   /@vitest/snapshot@0.34.5:
     resolution: {integrity: sha512-+ikwSbhu6z2yOdtKmk/aeoDZ9QPm2g/ZO5rXT58RR9Vmu/kB2MamyDSx77dctqdZfP3Diqv4mbc/yw2kPT8rmA==}
     dependencies:
-      magic-string: 0.30.3
+      magic-string: 0.30.4
       pathe: 1.1.1
       pretty-format: 29.7.0
     dev: true
@@ -6276,7 +6276,7 @@ packages:
       '@types/node': 18.17.19
       esbuild: 0.18.20
       postcss: 8.4.30
-      rollup: 3.29.3
+      rollup: 3.29.4
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
@@ -6326,7 +6326,7 @@ packages:
       chai: 4.3.8
       debug: 4.3.4
       local-pkg: 0.4.3
-      magic-string: 0.30.3
+      magic-string: 0.30.4
       pathe: 1.1.1
       picocolors: 1.0.0
       std-env: 3.4.3
@@ -6346,8 +6346,8 @@ packages:
       - terser
     dev: true
 
-  /volar-service-css@0.0.13(@volar/language-service@1.10.1):
-    resolution: {integrity: sha512-WAuo7oDYgTQ1cr45EqTGoPGtClj0f5PZDQARgQveXKu0CQgyXn8Bs7c4EjDR0fNLhiG3moBEs2uSUGxjSKghxw==}
+  /volar-service-css@0.0.14(@volar/language-service@1.10.1):
+    resolution: {integrity: sha512-xmyKoyWpbgM0u7mGA1ogyj5ol7CfQADm5eXNpeJeX3Rp79rFEtz1DuuaIjcgRvhSYsjJfPBOtOvHBwTRf4HaEQ==}
     peerDependencies:
       '@volar/language-service': ~1.10.0
     peerDependenciesMeta:
@@ -6355,8 +6355,8 @@ packages:
         optional: true
     dependencies:
       '@volar/language-service': 1.10.1
-      vscode-css-languageservice: 6.2.7
-      vscode-uri: 3.0.7
+      vscode-css-languageservice: 6.2.9
+      vscode-uri: 3.0.8
     dev: false
 
   /volar-service-emmet@0.0.14(@volar/language-service@1.10.1):
@@ -6385,13 +6385,13 @@ packages:
       vscode-uri: 3.0.8
     dev: false
 
-  /vscode-css-languageservice@6.2.7:
-    resolution: {integrity: sha512-Jd8wpIg5kJ15CfrieoEPvu3gGFc36sbM3qXCtjVq5zrnLEX5NhHxikMDtf8AgQsYklXiDqiZLKoBnzkJtRbTHQ==}
+  /vscode-css-languageservice@6.2.9:
+    resolution: {integrity: sha512-9MsOvAi+VycKomQ7KEq4o/hLtjHHrtRLLl8lM9nMcH8cxfNI7/6jVXmsV/7pdbDWu9L3DZhsspN1eMXZwiOymw==}
     dependencies:
       '@vscode/l10n': 0.0.16
       vscode-languageserver-textdocument: 1.0.8
-      vscode-languageserver-types: 3.17.4
-      vscode-uri: 3.0.7
+      vscode-languageserver-types: 3.17.3
+      vscode-uri: 3.0.8
     dev: false
 
   /vscode-html-languageservice@5.1.0:
