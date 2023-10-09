@@ -25,7 +25,7 @@
 		"dist"
 	],
 	"engines": {
-		"vscode": "^1.78.1"
+		"vscode": "^1.82.0"
 	},
 	"activationEvents": [
 		"onLanguage:html1"
@@ -55,6 +55,6 @@
 		"@volar/language-server": "~1.10.0",
 		"@volar/vscode": "~1.10.0",
 		"@vscode/vsce": "latest",
-		"vscode-languageclient": "^8.1.0"
+		"vscode-languageclient": "^9.0.1"
 	}
 }
