@@ -55,6 +55,6 @@
 		"@volar/language-server": "~1.10.0",
 		"@volar/vscode": "~1.10.0",
 		"@vscode/vsce": "latest",
-		"vscode-languageclient": "^9.0.0"
+		"vscode-languageclient": "^8.1.0"
 	}
 }
