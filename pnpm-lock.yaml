@@ -54,8 +54,8 @@ importers:
         specifier: ~1.11.0
         version: 1.11.0
       volar-service-css:
-        specifier: 0.0.14
-        version: 0.0.14(@volar/language-service@1.11.0)
+        specifier: 0.0.17
+        version: 0.0.17(@volar/language-service@1.11.0)
       volar-service-emmet:
         specifier: 0.0.14
         version: 0.0.14(@volar/language-service@1.11.0)
@@ -6348,16 +6348,16 @@ packages:
       - terser
     dev: true
 
-  /volar-service-css@0.0.14(@volar/language-service@1.11.0):
-    resolution: {integrity: sha512-xmyKoyWpbgM0u7mGA1ogyj5ol7CfQADm5eXNpeJeX3Rp79rFEtz1DuuaIjcgRvhSYsjJfPBOtOvHBwTRf4HaEQ==}
+  /volar-service-css@0.0.17(@volar/language-service@1.11.0):
+    resolution: {integrity: sha512-bEDJykygMzn2+a9ud6KwZZLli9eqarxApAXZuf2CqJJh6Trw1elmbBCo9SlPfqMrIhpFnwV0Sa+Xoc9x5WPeGw==}
     peerDependencies:
-      '@volar/language-service': ~1.10.0
+      '@volar/language-service': ~1.11.0
     peerDependenciesMeta:
       '@volar/language-service':
         optional: true
     dependencies:
       '@volar/language-service': 1.11.0
-      vscode-css-languageservice: 6.2.9
+      vscode-css-languageservice: 6.2.10
       vscode-uri: 3.0.8
     dev: false
 
@@ -6387,12 +6387,12 @@ packages:
       vscode-uri: 3.0.8
     dev: false
 
-  /vscode-css-languageservice@6.2.9:
-    resolution: {integrity: sha512-9MsOvAi+VycKomQ7KEq4o/hLtjHHrtRLLl8lM9nMcH8cxfNI7/6jVXmsV/7pdbDWu9L3DZhsspN1eMXZwiOymw==}
+  /vscode-css-languageservice@6.2.10:
+    resolution: {integrity: sha512-sYUZPku4mQ06AWGCbMyjv2tdR6juBW6hTbVPFwbJvNVzdtEfBioQOgkdXg7yMJNWnXkvWSU1FL2kb4Vxu5Cdyw==}
     dependencies:
       '@vscode/l10n': 0.0.16
-      vscode-languageserver-textdocument: 1.0.8
-      vscode-languageserver-types: 3.17.3
+      vscode-languageserver-textdocument: 1.0.11
+      vscode-languageserver-types: 3.17.5
       vscode-uri: 3.0.8
     dev: false
 
@@ -6429,10 +6429,6 @@ packages:
 
   /vscode-languageserver-textdocument@1.0.8:
     resolution: {integrity: sha512-1bonkGqQs5/fxGT5UchTgjGVnfysL0O8v1AYMBjqTbWQTFn721zaPGDYFkOKtfDgFiSgXM3KwaG3FMGfW4Ed9Q==}
-    dev: false
-
-  /vscode-languageserver-types@3.17.3:
-    resolution: {integrity: sha512-SYU4z1dL0PyIMd4Vj8YOqFvHu7Hz/enbWtpfnVbJHU4Nd1YNYx8u0ennumc6h48GQNeOLxmwySmnADouT/AuZA==}
     dev: false
 
   /vscode-languageserver-types@3.17.4:
