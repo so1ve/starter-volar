@@ -51,7 +51,7 @@
 	},
 	"devDependencies": {
 		"@html1/language-server": "workspace:*",
-		"@types/vscode": "1.84.0",
+		"@types/vscode": "1.84.1",
 		"@volar/language-server": "~1.11.0",
 		"@volar/vscode": "~1.11.0",
 		"@vscode/vsce": "latest",
