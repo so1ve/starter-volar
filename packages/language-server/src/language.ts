@@ -21,15 +21,15 @@ export const language: Language<Html1File> = {
 const htmlLs = html.getLanguageService();
 
 export class Html1File implements VirtualFile {
-	kind = FileKind.TextFile;
-	capabilities = FileCapabilities.full;
-	codegenStacks = [];
+	public kind = FileKind.TextFile;
+	public capabilities = FileCapabilities.full;
+	public codegenStacks = [];
 
-	fileName!: string;
-	mappings!: VirtualFile["mappings"];
-	embeddedFiles!: VirtualFile["embeddedFiles"];
-	document!: html.TextDocument;
-	htmlDocument!: html.HTMLDocument;
+	public fileName!: string;
+	public mappings!: VirtualFile["mappings"];
+	public embeddedFiles!: VirtualFile["embeddedFiles"];
+	private document!: html.TextDocument;
+	private htmlDocument!: html.HTMLDocument;
 
 	constructor(
 		public sourceFileName: string,
@@ -44,7 +44,7 @@ export class Html1File implements VirtualFile {
 		this.onSnapshotUpdated();
 	}
 
-	onSnapshotUpdated() {
+	private onSnapshotUpdated() {
 		this.mappings = [
 			{
 				sourceRange: [0, this.snapshot.getLength()],
@@ -63,7 +63,7 @@ export class Html1File implements VirtualFile {
 		this.addStyleTag();
 	}
 
-	addStyleTag() {
+	private addStyleTag() {
 		let index = 0;
 		for (const root of this.htmlDocument.roots) {
 			if (
