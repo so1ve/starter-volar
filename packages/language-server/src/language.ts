@@ -28,8 +28,8 @@ export class Html1File implements VirtualFile {
 	public fileName!: string;
 	public mappings!: VirtualFile["mappings"];
 	public embeddedFiles!: VirtualFile["embeddedFiles"];
-	private document!: html.TextDocument;
-	private htmlDocument!: html.HTMLDocument;
+	public document!: html.TextDocument;
+	public htmlDocument!: html.HTMLDocument;
 
 	constructor(
 		public sourceFileName: string,
