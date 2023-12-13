@@ -3,7 +3,7 @@
 	"displayName": "html1",
 	"private": true,
 	"version": "0.0.0",
-	"packageManager": "pnpm@8.12.0",
+	"packageManager": "pnpm@8.12.1",
 	"publisher": "so1ve",
 	"author": "Ray <i@mk1.io> (@so1ve)",
 	"description": "",
