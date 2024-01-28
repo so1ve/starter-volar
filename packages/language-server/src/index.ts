@@ -1,64 +1,75 @@
-import type {
-	Diagnostic,
-	LanguageServerPlugin,
-} from "@volar/language-server/node";
+import type { Diagnostic } from "@volar/language-server/node";
 import {
 	createConnection,
-	startLanguageServer,
+	createServer,
+	createTypeScriptProjectProvider,
 } from "@volar/language-server/node";
-import * as CssService from "volar-service-css";
-import * as EmmetService from "volar-service-emmet";
-import * as HtmlService from "volar-service-html";
+import { create as createCssService } from "volar-service-css";
+import { create as createEmmetService } from "volar-service-emmet";
+import { create as createHtmlService } from "volar-service-html";
+import { create as createTypeScriptService } from "volar-service-typescript";
 
-import { Html1File, language } from "./language";
+import { Html1GeneratedCode, html1LanguagePlugin } from "./languagePlugin";
 
-const plugin: LanguageServerPlugin = () => ({
-	extraFileExtensions: [
-		{ extension: "html1", isMixedContent: true, scriptKind: 7 },
-	],
-	resolveConfig(config) {
-		// languages
-		config.languages ??= {};
-		config.languages.html1 ??= language;
+const connection = createConnection();
+const server = createServer(connection);
 
-		// services
-		config.services ??= {};
-		config.services.html ??= HtmlService.create();
-		config.services.css ??= CssService.create();
-		config.services.emmet ??= EmmetService.create();
-		config.services.html1 ??= (context) => ({
-			provideDiagnostics(document) {
-				const [file] = context!.documents.getVirtualFileByUri(document.uri);
-				if (!(file instanceof Html1File)) {
-					return;
-				}
+connection.listen();
 
-				const styleNodes = file.htmlDocument.roots.filter(
-					(root) => root.tag === "style",
-				);
-				if (styleNodes.length <= 1) {
-					return;
-				}
+connection.onInitialize((params) =>
+	server.initialize(params, createTypeScriptProjectProvider, {
+		getLanguagePlugins() {
+			return [html1LanguagePlugin];
+		},
+		getServicePlugins() {
+			return [
+				createHtmlService(),
+				createCssService(),
+				createEmmetService(),
+				createTypeScriptService(server.modules.typescript!),
+				{
+					create(context) {
+						return {
+							provideDiagnostics(document) {
+								const [virtualCode] = context.documents.getVirtualCodeByUri(
+									document.uri,
+								);
+								if (!(virtualCode instanceof Html1GeneratedCode)) {
+									return;
+								}
 
-				const errors: Diagnostic[] = [];
-				for (let index = 1; index < styleNodes.length; index++) {
-					errors.push({
-						severity: 2,
-						range: {
-							start: file.document.positionAt(styleNodes[index].start),
-							end: file.document.positionAt(styleNodes[index].end),
-						},
-						source: "html1",
-						message: "Only one style tag is allowed.",
-					});
-				}
+								const styleNodes = virtualCode.htmlDocument.roots.filter(
+									(root) => root.tag === "style",
+								);
+								if (styleNodes.length <= 1) {
+									return;
+								}
 
-				return errors;
-			},
-		});
+								const errors: Diagnostic[] = [];
+								for (let i = 1; i < styleNodes.length; i++) {
+									errors.push({
+										severity: 2,
+										range: {
+											start: virtualCode.document.positionAt(
+												styleNodes[i].start,
+											),
+											end: virtualCode.document.positionAt(styleNodes[i].end),
+										},
+										source: "html1",
+										message: "Only one style tag is allowed.",
+									});
+								}
 
-		return config;
-	},
-});
+								return errors;
+							},
+						};
+					},
+				},
+			];
+		},
+	}),
+);
 
-startLanguageServer(createConnection(), plugin);
+connection.onInitialized(server.initialized);
+
+connection.onShutdown(server.shutdown);

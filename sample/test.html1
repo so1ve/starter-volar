@@ -4,5 +4,10 @@
 <!-- custom diagnosis: Only one style tag is allowed. -->
 <style></style>
 
+<!-- TS support -->
+<script>
+let foo: string = 123;
+</script>
+
 <!-- type ">" to trigger auto close --> 
 <div
