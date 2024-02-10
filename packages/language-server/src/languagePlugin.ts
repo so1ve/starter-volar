@@ -1,22 +1,16 @@
-import type {
-	CodeMapping,
-	LanguagePlugin,
-	VirtualCode,
-} from "@volar/language-core";
+import type { LanguagePlugin, VirtualCode } from "@volar/language-core";
 import { forEachEmbeddedCode } from "@volar/language-core";
 import type * as ts from "typescript";
 import * as html from "vscode-html-languageservice";
 
-export const html1LanguagePlugin: LanguagePlugin<Html1GeneratedCode> = {
+export const html1LanguagePlugin: LanguagePlugin = {
 	createVirtualCode(_id, langaugeId, snapshot) {
 		if (langaugeId === "html1") {
-			return new Html1GeneratedCode(snapshot);
+			return createHtml1Code(snapshot);
 		}
 	},
-	updateVirtualCode(_id, html1File, snapshot) {
-		html1File.update(snapshot);
-
-		return html1File;
+	updateVirtualCode(_id, _oldVirtualCode, newSnapshot) {
+		return createHtml1Code(newSnapshot);
 	},
 	typescript: {
 		extraFileExtensions: [
@@ -27,7 +21,7 @@ export const html1LanguagePlugin: LanguagePlugin<Html1GeneratedCode> = {
 				if (code.id.startsWith("script_")) {
 					return {
 						code,
-						extension: ".ts",
+						extension: ".js",
 						scriptKind: 1,
 					};
 				}
@@ -38,29 +32,28 @@ export const html1LanguagePlugin: LanguagePlugin<Html1GeneratedCode> = {
 
 const htmlLs = html.getLanguageService();
 
-export class Html1GeneratedCode implements VirtualCode {
-	public id = "main";
-	public languageId = "html1";
-	public mappings!: CodeMapping[];
-	public embeddedCodes!: VirtualCode[];
-	public document!: html.TextDocument;
-	public htmlDocument!: html.HTMLDocument;
+export interface Html1Code extends VirtualCode {
+	htmlDocument: html.HTMLDocument;
+}
 
-	constructor(public snapshot: ts.IScriptSnapshot) {
-		this.onSnapshotUpdated();
-	}
+function createHtml1Code(snapshot: ts.IScriptSnapshot): Html1Code {
+	const document = html.TextDocument.create(
+		"",
+		"html",
+		0,
+		snapshot.getText(0, snapshot.getLength()),
+	);
+	const htmlDocument = htmlLs.parseHTMLDocument(document);
 
-	public update(newSnapshot: ts.IScriptSnapshot) {
-		this.snapshot = newSnapshot;
-		this.onSnapshotUpdated();
-	}
-
-	private onSnapshotUpdated() {
-		this.mappings = [
+	return {
+		id: "root",
+		languageId: "html1",
+		snapshot,
+		mappings: [
 			{
 				sourceOffsets: [0],
 				generatedOffsets: [0],
-				lengths: [this.snapshot.getLength()],
+				lengths: [snapshot.getLength()],
 				data: {
 					completion: true,
 					format: true,
@@ -70,32 +63,23 @@ export class Html1GeneratedCode implements VirtualCode {
 					verification: true,
 				},
 			},
-		];
-		this.document = html.TextDocument.create(
-			"",
-			"html",
-			0,
-			this.snapshot.getText(0, this.snapshot.getLength()),
-		);
-		this.htmlDocument = htmlLs.parseHTMLDocument(this.document);
-		this.embeddedCodes = [];
-		this.addStyleTag();
-	}
+		],
+		embeddedCodes: [...createEmbeddedCodes()],
+		htmlDocument,
+	};
 
-	private addStyleTag() {
+	function* createEmbeddedCodes(): Generator<VirtualCode> {
 		let styles = 0;
 		let scripts = 0;
-		for (const root of this.htmlDocument.roots) {
+
+		for (const root of htmlDocument.roots) {
 			if (
 				root.tag === "style" &&
 				root.startTagEnd !== undefined &&
 				root.endTagStart !== undefined
 			) {
-				const styleText = this.snapshot.getText(
-					root.startTagEnd,
-					root.endTagStart,
-				);
-				this.embeddedCodes.push({
+				const styleText = snapshot.getText(root.startTagEnd, root.endTagStart);
+				yield {
 					id: `style_${styles++}`,
 					languageId: "css",
 					snapshot: {
@@ -119,15 +103,15 @@ export class Html1GeneratedCode implements VirtualCode {
 						},
 					],
 					embeddedCodes: [],
-				});
+				};
 			}
 			if (
 				root.tag === "script" &&
 				root.startTagEnd !== undefined &&
 				root.endTagStart !== undefined
 			) {
-				const text = this.snapshot.getText(root.startTagEnd, root.endTagStart);
-				this.embeddedCodes.push({
+				const text = snapshot.getText(root.startTagEnd, root.endTagStart);
+				yield {
 					id: `script_${scripts++}`,
 					languageId: "typescript",
 					snapshot: {
@@ -151,7 +135,7 @@ export class Html1GeneratedCode implements VirtualCode {
 						},
 					],
 					embeddedCodes: [],
-				});
+				};
 			}
 		}
 	}

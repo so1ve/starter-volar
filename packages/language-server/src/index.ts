@@ -1,4 +1,4 @@
-import type { Diagnostic } from "@volar/language-server/node";
+import type { Diagnostic, VirtualCode } from "@volar/language-server/node";
 import {
 	createConnection,
 	createServer,
@@ -9,7 +9,8 @@ import { create as createEmmetService } from "volar-service-emmet";
 import { create as createHtmlService } from "volar-service-html";
 import { create as createTypeScriptService } from "volar-service-typescript";
 
-import { Html1GeneratedCode, html1LanguagePlugin } from "./languagePlugin";
+import type { Html1Code } from "./languagePlugin";
+import { html1LanguagePlugin } from "./languagePlugin";
 
 const connection = createConnection();
 const server = createServer(connection);
@@ -31,29 +32,25 @@ connection.onInitialize((params) =>
 					create(context) {
 						return {
 							provideDiagnostics(document) {
-								const [virtualCode] = context.documents.getVirtualCodeByUri(
+								const virtualCode = context.documents.getVirtualCodeByUri(
 									document.uri,
-								);
-								if (!(virtualCode instanceof Html1GeneratedCode)) {
+								)[0] as VirtualCode | Html1Code | undefined;
+								if (!virtualCode || !("htmlDocument" in virtualCode)) {
 									return;
 								}
-
 								const styleNodes = virtualCode.htmlDocument.roots.filter(
 									(root) => root.tag === "style",
 								);
 								if (styleNodes.length <= 1) {
 									return;
 								}
-
 								const errors: Diagnostic[] = [];
 								for (let i = 1; i < styleNodes.length; i++) {
 									errors.push({
 										severity: 2,
 										range: {
-											start: virtualCode.document.positionAt(
-												styleNodes[i].start,
-											),
-											end: virtualCode.document.positionAt(styleNodes[i].end),
+											start: document.positionAt(styleNodes[i].start),
+											end: document.positionAt(styleNodes[i].end),
 										},
 										source: "html1",
 										message: "Only one style tag is allowed.",
@@ -71,5 +68,4 @@ connection.onInitialize((params) =>
 );
 
 connection.onInitialized(server.initialized);
-
 connection.onShutdown(server.shutdown);
