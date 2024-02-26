@@ -27,7 +27,7 @@ connection.onInitialize((params) =>
 				createHtmlService(),
 				createCssService(),
 				createEmmetService(),
-				createTypeScriptService(server.modules.typescript!),
+				createTypeScriptService(server.modules.typescript),
 				{
 					create(context) {
 						return {
