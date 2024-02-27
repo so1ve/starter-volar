@@ -102,7 +102,6 @@ function createHtml1Code(snapshot: ts.IScriptSnapshot): Html1Code {
 							},
 						},
 					],
-					embeddedCodes: [],
 				};
 			}
 			if (
@@ -134,7 +133,6 @@ function createHtml1Code(snapshot: ts.IScriptSnapshot): Html1Code {
 							},
 						},
 					],
-					embeddedCodes: [],
 				};
 			}
 		}

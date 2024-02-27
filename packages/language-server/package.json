@@ -38,9 +38,9 @@
 		"prepublishOnly": "nr build"
 	},
 	"dependencies": {
-		"@volar/language-core": "~2.0.0",
-		"@volar/language-server": "~2.0.0",
-		"@volar/language-service": "~2.0.0",
+		"@volar/language-core": "~2.1.0",
+		"@volar/language-server": "~2.1.0",
+		"@volar/language-service": "~2.1.0",
 		"volar-service-css": "volar-2.0",
 		"volar-service-emmet": "volar-2.0",
 		"volar-service-html": "volar-2.0",

@@ -27,6 +27,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		},
 	};
 	const initializationOptions: InitializationOptions = {
+		// @ts-expect-error Waiting for https://github.com/volarjs/volar.js/commit/379b2287fa689b6184a472e878cb5f0bd11067f4
 		typescript: {
 			tsdk: (await getTsdk(context)).tsdk,
 		},
