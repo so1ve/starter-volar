@@ -7,7 +7,9 @@ export default defineConfig({
 			"./node_modules/@html1/language-server/bin/html1-language-server.js",
 	},
 	format: ["cjs"],
-	shims: false,
+	tsconfig: "../../tsconfig.json",
+	splitting: true,
+	clean: true,
 	dts: false,
 	external: ["vscode"],
 });

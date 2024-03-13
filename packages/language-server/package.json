@@ -34,7 +34,7 @@
 		"access": "public"
 	},
 	"scripts": {
-		"build": "tsup src/index.ts",
+		"build": "tsup",
 		"prepublishOnly": "nr build"
 	},
 	"dependencies": {
